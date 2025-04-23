@@ -3,12 +3,15 @@ from mysql.connector import Error
 import pandas as pd
 import streamlit as st
 import os
-host = os.getenv("DB_HOST")
-port = int(os.getenv("DB_PORT"))
-user = os.getenv("DB_USER")
-password = os.getenv("DB_PASSWORD")
-database = os.getenv("DB_NAME")
-def create_connection(host=host, port=port, user=user, password=password, database=database):
+from dotenv import load_dotenv
+load_dotenv()
+host1 = os.getenv("DB_HOST")
+port1 = os.getenv("DB_PORT")
+user1 = os.getenv("DB_USER")
+password1 = os.getenv("DB_PASSWORD")
+database1 = os.getenv("DB_NAME")
+port1 = int(port1)
+def create_connection(host=host1, port=port1, user=user1, password=password1, database=database1):
     """
     Tạo kết nối tới MySQL database
     
@@ -121,12 +124,13 @@ def get_connection():
     """
     if 'db_connection' not in st.session_state:
         # Thay đổi thông tin kết nối phù hợp với cấu hình của bạn
+
         st.session_state.db_connection = create_connection(
-            host=host,
-            port=port,
-            user=user,
-            password=password,
-            database=database
+            host=host1,
+            port=port1,
+            user=user1,
+            password=password1,
+            database=database1
         )
     
     return st.session_state.db_connection

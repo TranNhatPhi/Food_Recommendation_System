@@ -4,11 +4,15 @@ import random
 from datetime import datetime, timedelta
 from db_utils import create_connection, execute_query
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 host = os.getenv("DB_HOST")
-port = int(os.getenv("DB_PORT"))
+port = os.getenv("DB_PORT")
 user = os.getenv("DB_USER")
 password = os.getenv("DB_PASSWORD")
 database = os.getenv("DB_NAME")
+port = int(port)
 def import_sample_foods():
     """Tạo và import dữ liệu mẫu cho món ăn"""
     # Kết nối tới database

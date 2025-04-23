@@ -1,10 +1,14 @@
 from db_utils import create_connection, execute_query
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 host = os.getenv("DB_HOST")
-port = int(os.getenv("DB_PORT"))
+port = os.getenv("DB_PORT")
 user = os.getenv("DB_USER")
 password = os.getenv("DB_PASSWORD")
 database = os.getenv("DB_NAME")
+port = int(port)
 def create_database():
     """Tạo database nếu chưa tồn tại"""
     try:
